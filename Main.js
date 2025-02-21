@@ -1,8 +1,22 @@
+const fs = require('fs');
+const path = require('path');
 
-const fs = require('fs/promises');
+const filePath = path.join(__dirname, 'hello.txt');
 
-async function main() {
-await fs.writeFile('index.html', '<div>Hello World</div>');
+fs.writeFile(filePath, 'Hello World!', (err) => {
+    if (err) {
+        console.error('Error writing file:', err);
+    } else {
+        console.log('File created successfully:', filePath);
+    }
+});
+
+
+function getday() {
+    const days = ['კვირა', 'ორშაბათი', 'სამშაბათი', 'ოთხშაბათი', 'ხუთშაბათი', 'პარასკევი', 'შაბათი'];
+    const today = new Date().getDay();
+    return days[today];
 }
 
-main()
+console.log(getday());
+
